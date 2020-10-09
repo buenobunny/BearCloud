@@ -98,7 +98,7 @@ func getJSON(response http.ResponseWriter, request *http.Request) {
 	}
 
 	if (cred.Username == "" || cred.Password == "") {
-		http.Error(response, err.New("Bad Credentials").Error(), http.StatusBadRequest)
+		http.Error(response, errors.New("Bad Credentials").Error(), http.StatusBadRequest)
 		return
 	}
 
@@ -133,11 +133,11 @@ func signup(response http.ResponseWriter, request *http.Request) {
 	}
 
 	if (cred.Username == "" || cred.Password == "") {
-		http.Error(response, err.New("Bad Credentials").Error(), http.StatusBadRequest)
+		http.Error(response, errors.New("Bad Credentials").Error(), http.StatusBadRequest)
 		return
 	}
 
-	creds := append(cred, creds)
+	creds = append(creds, cred)
 	response.WriteHeader(201)
 	return
 }
@@ -173,7 +173,7 @@ func getIndex(response http.ResponseWriter, request *http.Request) {
 	}
 
 	if (cred.Username == "") {
-		http.Error(response, err.New("Bad Credentials").Error(), http.StatusBadRequest)
+		http.Error(response, errors.New("Bad Credentials").Error(), http.StatusBadRequest)
 		return
 	}
 
@@ -184,7 +184,7 @@ func getIndex(response http.ResponseWriter, request *http.Request) {
 		}
 	}
 
-	http.Error(response, err.New("User doesn't exist").Error(), http.StatusBadRequest)
+	http.Error(response, errors.New("User doesn't exist").Error(), http.StatusBadRequest)
 	return
 }
 
@@ -215,7 +215,7 @@ func getPassword(response http.ResponseWriter, request *http.Request) {
 	}
 
 	if (cred.Username == "") {
-		http.Error(response, err.New("Bad Credentials").Error(), http.StatusBadRequest)
+		http.Error(response, errors.New("Bad Credentials").Error(), http.StatusBadRequest)
 		return
 	}
 
@@ -226,7 +226,7 @@ func getPassword(response http.ResponseWriter, request *http.Request) {
 		}
 	}
 
-	http.Error(response, err.New("User doesn't exist").Error(), http.StatusBadRequest)
+	http.Error(response, errors.New("User doesn't exist").Error(), http.StatusBadRequest)
 	return
 }
 
@@ -262,7 +262,7 @@ func updatePassword(response http.ResponseWriter, request *http.Request) {
 	}
 
 	if (cred.Username == "") {
-		http.Error(response, err.New("Bad Credentials").Error(), http.StatusBadRequest)
+		http.Error(response, errors.New("Bad Credentials").Error(), http.StatusBadRequest)
 		return
 	}
 
@@ -273,7 +273,7 @@ func updatePassword(response http.ResponseWriter, request *http.Request) {
 		}
 	}
 
-	http.Error(response, err.New("User doesn't exist").Error(), http.StatusBadRequest)
+	http.Error(response, errors.New("User doesn't exist").Error(), http.StatusBadRequest)
 	return
 }
 
@@ -309,18 +309,18 @@ func deleteUser(response http.ResponseWriter, request *http.Request) {
 	}
 
 	if (cred.Username == "" || cred.Password == "") {
-		http.Error(response, err.New("Bad Credentials").Error(), http.StatusBadRequest)
+		http.Error(response, errors.New("Bad Credentials").Error(), http.StatusBadRequest)
 		return
 	}
 
 	for i := 0; i < len(creds); i++ {
 		if (creds[i].Username == cred.Username && creds[i].Password == cred.Password) {
-			creds := remove(creds, i)
+			creds = remove(creds, i)
 			return
 		}
 	}
 
-	http.Error(response, err.New("User doesn't exist").Error(), http.StatusBadRequest)
+	http.Error(response, errors.New("User doesn't exist").Error(), http.StatusBadRequest)
 	return
 }
 
