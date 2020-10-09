@@ -66,7 +66,7 @@ func getQuery(response http.ResponseWriter, request *http.Request) {
 		If there is no such query parameter, write an empty string to the response
 	*/
 
-	user := request.URL.Query().get("userID")
+	user := request.URL.Query().Get("userID")
 	fmt.Fprintf(response, user)
 }
 
@@ -91,7 +91,7 @@ func getJSON(response http.ResponseWriter, request *http.Request) {
 
 	cred := Credentials{}
 
-	err = json.NewDecoder(request.Body).Decode(&cred)
+	err := json.NewDecoder(request.Body).Decode(&cred)
 	if (err != nil) {
 		http.Error(response, err.Error(), http.StatusBadRequest)
 		return
@@ -126,7 +126,7 @@ func signup(response http.ResponseWriter, request *http.Request) {
 	/*YOUR CODE HERE*/
 	cred := Credentials{}
 
-	err = json.NewDecoder(request.Body).Decode(&cred)
+	err := json.NewDecoder(request.Body).Decode(&cred)
 	if (err != nil) {
 		http.Error(response, err.Error(), http.StatusBadRequest)
 		return
