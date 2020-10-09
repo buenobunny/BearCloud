@@ -3,6 +3,10 @@ package api
 import (
 	"net/http"
 	"github.com/gorilla/mux"
+	"fmt"
+	"encoding/json"
+	"errors"
+	"strconv"
 )
 
 
@@ -50,7 +54,7 @@ func getCookie(response http.ResponseWriter, request *http.Request) {
 		fmt.Fprintf(request, "")
 		return
 	}
-	accessToken = cookie.Value
+	accessToken := cookie.Value
 	fmt.Fprintf(request, accessToken)
 	return
 }
