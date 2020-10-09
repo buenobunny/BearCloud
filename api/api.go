@@ -10,7 +10,7 @@ import (
 //See credentials.go
 
 /*YOUR CODE HERE*/
-var creds [] Credentials = {};
+var creds [] Credentials = []Credentials{}
 
 func RegisterRoutes(router *mux.Router) error {
 
@@ -85,7 +85,7 @@ func getJSON(response http.ResponseWriter, request *http.Request) {
 
 	/*YOUR CODE HERE*/
 
-	cred = Credentials{}
+	cred := Credentials{}
 
 	err = json.NewDecoder(request.Body).Decode(&cred)
 	if (err != nil) {
@@ -120,7 +120,7 @@ func signup(response http.ResponseWriter, request *http.Request) {
 	*/
 
 	/*YOUR CODE HERE*/
-	cred = new Credentials{}
+	cred := Credentials{}
 
 	err = json.NewDecoder(request.Body).Decode(&cred)
 	if (err != nil) {
@@ -160,9 +160,9 @@ func getIndex(response http.ResponseWriter, request *http.Request) {
 	/*YOUR CODE HERE*/
 
 
-	cred = new Credentials{}
+	cred := Credentials{}
 
-	err = json.NewDecoder(request.Body).Decode(&cred)
+	err := json.NewDecoder(request.Body).Decode(&cred)
 	if (err != nil) {
 		http.Error(response, err.Error(), http.StatusBadRequest)
 		return
@@ -202,9 +202,9 @@ func getPassword(response http.ResponseWriter, request *http.Request) {
 	*/
 
 	/*YOUR CODE HERE*/
-	cred = new Credentials{}
+	cred := Credentials{}
 
-	err = json.NewDecoder(request.Body).Decode(&cred)
+	err := json.NewDecoder(request.Body).Decode(&cred)
 	if (err != nil) {
 		http.Error(response, err.Error(), http.StatusBadRequest)
 		return
@@ -249,9 +249,9 @@ func updatePassword(response http.ResponseWriter, request *http.Request) {
 	*/
 
 	/*YOUR CODE HERE*/
-	cred = new Credentials{}
+	cred := Credentials{}
 
-	err = json.NewDecoder(request.Body).Decode(&cred)
+	err := json.NewDecoder(request.Body).Decode(&cred)
 	if (err != nil) {
 		http.Error(response, err.Error(), http.StatusBadRequest)
 		return
@@ -296,9 +296,9 @@ func deleteUser(response http.ResponseWriter, request *http.Request) {
 	*/
 
 	/*YOUR CODE HERE*/
-	cred = new Credentials{}
+	cred := Credentials{}
 
-	err = json.NewDecoder(request.Body).Decode(&cred)
+	err := json.NewDecoder(request.Body).Decode(&cred)
 	if (err != nil) {
 		http.Error(response, err.Error(), http.StatusBadRequest)
 		return
@@ -311,7 +311,7 @@ func deleteUser(response http.ResponseWriter, request *http.Request) {
 
 	for i := 0; i < len(creds); i++ {
 		if (creds[i].Username == cred.Username && creds[i].Password == cred.Password) {
-			creds = remove(creds, i)
+			creds := remove(creds, i)
 			return
 		}
 	}
